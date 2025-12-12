@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1132929 -HW09 (百花齊放修正版)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="nature-bg">
+        <div class="sky"></div>
+
+        <h1 class="sky-title">✨ 富貴花開大對決 ✨</h1>
+
+        <div class="clouds">
+            <div class="cloud c1">☁️</div>
+            <div class="cloud c2">☁️</div>
+            <div class="cloud c3">☁️</div>
+            <div class="cloud c4">☁️</div>
+        </div>
+        <div class="sun">☀️</div>
+        <div class="grass"></div>
+
+        <div class="tree-container" onclick="dropApple()">
+            <div class="tree">🌳</div>
+            <div class="click-hint">👇點我摘果</div>
+        </div>
+    </div>
+
+    <div id="apple-layer"></div>
+
+    <div class="fixed-msg pos-tl">
+        <div class="big-word">平安</div>
+        <div class="small-word">歲歲年年</div>
+    </div>
+    <div class="fixed-msg pos-tr">
+        <div class="big-word">順心</div>
+        <div class="small-word">事事如意</div>
+    </div>
+    <div class="fixed-msg pos-bl">
+        <div class="big-word">招財</div>
+        <div class="small-word">金銀滿屋</div>
+    </div>
+    <div class="fixed-msg pos-br">
+        <div class="big-word">納福</div>
+        <div class="small-word">福氣東來</div>
+    </div>
+
+    <div class="marquee-top">
+        <div class="marquee-track">
+            <span>早安吉祥 🌺 認同請分享 🌺 緣份是金 🌺 惜福感恩 🌺 聽媽媽的話 🌺 萬事如意 🌺 身體健康 🌺 平安喜樂 🌺 心存善念 🌺 佛光普照 🌺 知足常樂 🌺 日日是好日 🌺 &nbsp;</span>
+            <span>早安吉祥 🌺 認同請分享 🌺 緣份是金 🌺 惜福感恩 🌺 聽媽媽的話 🌺 萬事如意 🌺 身體健康 🌺 平安喜樂 🌺 心存善念 🌺 佛光普照 🌺 知足常樂 🌺 日日是好日 🌺 &nbsp;</span>
+        </div>
+    </div>
+    <div class="marquee-bottom">
+        <div class="marquee-track">
+            <span>吃飽沒 🍱 記得喝水 💧 簡單就是幸福 🍀 一笑解千愁 😄 莫生氣 😤 今天也是美好的一天 ☀️ 財源廣進 💰 闔家平安 🏠 福氣滿滿 🧧 快樂每一天 🌈 好人一生平安 🙏 &nbsp;</span>
+            <span>吃飽沒 🍱 記得喝水 💧 簡單就是幸福 🍀 一笑解千愁 😄 莫生氣 😤 今天也是美好的一天 ☀️ 財源廣進 💰 闔家平安 🏠 福氣滿滿 🧧 快樂每一天 🌈 好人一生平安 🙏 &nbsp;</span>
+        </div>
+    </div>
+
+    <div class="tv-container">
+        <div class="tv-antenna"></div>
+        <div class="tv-body">
+            <div class="tv-screen">
+                <div class="static-noise"></div>
+
+                <div class="game-content">
+
+                    <div class="scoreboard">
+                        <div class="score-box">
+                            <div class="score-label">您 (<span id="icon-x-display">🌸</span>)</div>
+                            <div id="score-x" class="score-num">0</div>
+                        </div>
+                        <div class="score-box">
+                            <div class="score-label">和氣</div>
+                            <div id="score-d" class="score-num">0</div>
+                        </div>
+                        <div class="score-box">
+                            <div class="score-label">電腦 (<span id="icon-o-display">🌹</span>)</div>
+                            <div id="score-o" class="score-num">0</div>
+                        </div>
+                    </div>
+
+                    <div id="status" class="status-msg">請喝茶，請下棋</div>
+
+                    <div id="board" class="board"></div>
+                </div>
+            </div>
+
+            <div class="tv-controls">
+                <div class="dial"></div>
+                <div class="dial"></div>
+                <div class="speaker-grill"></div>
+                <button onclick="resetGame()" class="tv-btn">重新<br>來過</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="zoo-layer"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+﻿:root {
+    --elder-pink: #ff00cc;
+    --elder-red: #ff0000;
+    --elder-yellow: #ffff00;
+    --elder-green: #00ff00;
+    --elder-blue: #0000ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Noto Serif TC', 'PMingLiU', serif;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000;
+}
+
+/* --- 背景風景 --- */
+.nature-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.sky {
+    height: 60%;
+    background: linear-gradient(to bottom, #1e90ff, #87cefa);
+}
+
+.grass {
+    height: 40%;
+    background: radial-gradient(circle, #32cd32 10%, #006400 90%);
+    border-top: 10px dashed #ffff00;
+}
+
+/* --- 修正1: 標題上移 --- */
+.sky-title {
+    position: absolute;
+    top: 30px; /* 固定距離頂部 30px，確保不擋電視 */
+    width: 100%;
+    text-align: center;
+    font-size: 60px;
+    color: #ffff00;
+    text-shadow: 4px 4px #ff0000, -2px -2px #fff;
+    z-index: 5;
+    animation: floatTitle 3s ease-in-out infinite alternate;
+    pointer-events: none;
+    line-height: 1.2;
+}
+
+@keyframes floatTitle {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(10px);
+    }
+}
+
+.sun {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 100px;
+    animation: spin 5s linear infinite;
+    filter: drop-shadow(0 0 20px yellow);
+    cursor: pointer;
+    z-index: 2;
+}
+
+    .sun:active {
+        transform: scale(1.5);
+    }
+
+.clouds {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.9;
+    text-shadow: 2px 2px 5px #fff;
+}
+
+.c1 {
+    top: 5%;
+    animation: float 15s linear infinite;
+}
+
+.c2 {
+    top: 15%;
+    animation: float 25s linear infinite reverse;
+}
+
+.c3 {
+    top: 10%;
+    animation: float 35s linear infinite;
+}
+
+.c4 {
+    top: 20%;
+    animation: float 20s linear infinite reverse;
+}
+
+/* 樹 */
+.tree-container {
+    position: absolute;
+    bottom: 25%;
+    right: -5%;
+    z-index: 10;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+    .tree-container:active {
+        transform: scale(1.05) rotate(3deg);
+    }
+
+.tree {
+    font-size: 350px;
+    filter: drop-shadow(10px 10px 15px rgba(0,0,0,0.6));
+}
+
+.click-hint {
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    background: white;
+    border: 3px solid red;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: 24px;
+    white-space: nowrap;
+    animation: blink 1s infinite;
+    box-shadow: 3px 3px 0 #000;
+}
+
+/* 掉落的蘋果 */
+.apple {
+    position: absolute;
+    font-size: 50px;
+    z-index: 15;
+    animation: fall 1.5s ease-in forwards;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(400px) rotate(360deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(420px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* 固定問候語 */
+.fixed-msg {
+    position: absolute;
+    z-index: 40;
+    text-align: center;
+    pointer-events: none;
+    filter: drop-shadow(5px 5px 0px #000);
+}
+
+    .fixed-msg .big-word {
+        font-size: 70px;
+        font-weight: 900;
+        background: linear-gradient(to bottom, #ff00ff, #ffff00);
+        -webkit-background-clip: text;
+        color: transparent;
+        -webkit-text-stroke: 2px #fff;
+    }
+
+    .fixed-msg .small-word {
+        font-size: 26px;
+        color: #00ff00;
+        background: #000;
+        padding: 0 10px;
+        border: 2px solid #fff;
+    }
+
+.pos-tl {
+    top: 20%;
+    left: 15%;
+    transform: rotate(-15deg);
+}
+
+.pos-tr {
+    top: 20%;
+    right: 15%;
+    transform: rotate(15deg);
+}
+
+.pos-bl {
+    bottom: 20%;
+    left: 15%;
+    transform: rotate(10deg);
+}
+
+.pos-br {
+    bottom: 20%;
+    right: 15%;
+    transform: rotate(-10deg);
+}
+
+/* 跑馬燈 */
+.marquee-top, .marquee-bottom {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    z-index: 50;
+    border-top: 5px solid yellow;
+    border-bottom: 5px solid yellow;
+}
+
+.marquee-top {
+    top: 20px;
+    background: rgba(255, 0, 0, 0.9);
+    color: yellow;
+    transform: rotate(-1deg);
+}
+
+.marquee-bottom {
+    bottom: 20px;
+    background: rgba(0, 0, 255, 0.9);
+    color: white;
+    transform: rotate(1deg);
+}
+
+.marquee-track {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 20s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.marquee-track span {
+    font-size: 36px;
+    font-weight: bold;
+    padding-right: 0;
+}
+
+/* 電視機 */
+.tv-container {
+    position: relative;
+    z-index: 20;
+    width: 600px;
+    height: 480px;
+    animation: hoverTv 3s ease-in-out infinite alternate;
+    margin-top: 30px; /* 稍微往下推一點點，避免視覺太擠 */
+}
+
+@keyframes hoverTv {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-10px);
+    }
+}
+
+.tv-antenna {
+    width: 150px;
+    height: 100px;
+    border-left: 8px solid #ccc;
+    border-right: 8px solid #ccc;
+    position: absolute;
+    top: -70px;
+    left: 50%;
+    transform: translateX(-50%) skewX(15deg);
+}
+
+.tv-body {
+    width: 100%;
+    height: 100%;
+    background: #8b4513;
+    border-radius: 30px;
+    border: 15px solid #5a2d0c;
+    box-shadow: 20px 20px 0px rgba(0,0,0,0.4);
+    display: flex;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.tv-screen {
+    width: 78%;
+    height: 100%;
+    background: #000;
+    border-radius: 40% / 10%;
+    position: relative;
+    overflow: hidden;
+    border: 5px solid #333;
+}
+
+.static-noise {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://media.giphy.com/media/oEI9uBYSzLpBK/giphy.gif');
+    opacity: 0.15;
+    pointer-events: none;
+    z-index: 30;
+    mix-blend-mode: screen;
+}
+
+.game-content {
+    position: relative;
+    z-index: 5;
+    color: #fff;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.2) 3px);
+}
+
+/* --- 修正2: 記分板格式 --- */
+.scoreboard {
+    display: flex;
+    gap: 30px;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    justify-content: center;
+    width: 100%;
+}
+
+/* 強制垂直排列，避免文字被擠爆 */
+.score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.score-label {
+    white-space: nowrap; /* 防止名稱換行 */
+    margin-bottom: 5px;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+}
+
+.score-num {
+    font-size: 1.8em;
+    color: #00ff00;
+    line-height: 1;
+}
+
+.status-msg {
+    color: #00ffff;
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    background: rgba(0,0,0,0.6);
+    padding: 5px 15px;
+    border-radius: 10px;
+}
+
+/* 棋盤 */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 75px);
+    grid-template-rows: repeat(3, 75px);
+    gap: 5px;
+    background: #ff00ff;
+    border: 5px solid #ff00ff;
+}
+
+.cell {
+    width: 75px;
+    height: 75px;
+    background: #222;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3em;
+    cursor: pointer;
+    user-select: none;
+}
+
+    .cell:active {
+        background: #444;
+    }
+
+.tv-controls {
+    width: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+}
+
+.dial {
+    width: 60px;
+    height: 60px;
+    background: #222;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    border: 5px solid #ccc;
+    box-shadow: 5px 5px 5px #000;
+}
+
+.speaker-grill {
+    flex-grow: 1;
+    width: 80%;
+    background: repeating-linear-gradient(0deg, #111, #111 3px, #444 3px, #444 6px);
+    margin-bottom: 10px;
+    border: 2px solid #000;
+}
+
+.tv-btn {
+    background: #ff0000;
+    color: #ffff00;
+    border: 4px outset #fff;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1.4em;
+    box-shadow: 4px 4px 0 #000;
+    font-family: inherit;
+    line-height: 1.2;
+}
+
+    .tv-btn:active {
+        transform: scale(0.95);
+        border-style: inset;
+    }
+
+.win-line {
+    background: radial-gradient(circle, #ffff00, #ff0000) !important;
+    animation: flashWin 0.2s infinite;
+}
+
+@keyframes flashWin {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(90deg);
+    }
+}
+
+#zoo-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.animal {
+    position: absolute;
+    font-size: 50px;
+    pointer-events: auto;
+    cursor: pointer;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.5));
+    user-select: none;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(50px);
+    }
+}
+
+/* RWD */
+@media (max-width: 900px) {
+    .fixed-msg {
+        display: none;
+    }
+
+    .tv-container {
+        width: 95%;
+        height: auto;
+        aspect-ratio: 4/3;
+        margin-top: 50px;
+    }
+
+    .board {
+        grid-template-columns: repeat(3, 60px);
+        grid-template-rows: repeat(3, 60px);
+    }
+
+    .cell {
+        width: 60px;
+        height: 60px;
+        font-size: 2.5em;
+    }
+
+    .tv-controls {
+        display: none;
+    }
+
+    .tv-screen {
+        width: 100%;
+    }
+
+    .tree {
+        font-size: 150px;
+    }
+
+    .sky-title {
+        font-size: 30px;
+        top: 10px;
+    }
+}
